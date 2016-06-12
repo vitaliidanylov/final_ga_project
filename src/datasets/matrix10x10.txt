@@ -1,0 +1,10 @@
+0 20 12 9 Infinity Infinity Infinity Infinity Infinity Infinity
+20 0 11 Infinity 13 Infinity Infinity Infinity Infinity Infinity
+12 11 0 3 4 Infinity Infinity Infinity Infinity Infinity
+9 Infinity 3 0 Infinity 10 Infinity Infinity Infinity Infinity
+Infinity 13 4 Infinity 0 Infinity Infinity Infinity 6 Infinity
+Infinity Infinity Infinity 10 Infinity 0 7 8 Infinity Infinity
+Infinity Infinity 17 Infinity Infinity 7 0 5 16 18
+Infinity Infinity Infinity Infinity Infinity 8 5 0 Infinity 21
+Infinity Infinity Infinity Infinity 6 Infinity 16 Infinity 0 2
+Infinity Infinity Infinity Infinity Infinity Infinity 18 21 9 0
