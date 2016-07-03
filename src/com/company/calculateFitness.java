@@ -2,16 +2,12 @@ package com.company;
 
 import sun.security.util.BitArray;
 
-/**
- * Created by vit on 6/10/2016.
- */
 public class calculateFitness {
 
     public static int maxFitness = Integer.MAX_VALUE;
     public static BitArray maxChromosome;
 
-    /*Public methods*/
-    //get fitness of chromosome
+    //Функция получения целевого значения хромосомы
     static int getFitness(double[][] matrix, BitArray ch){
         int     fitness = 0,
                 tmpInd = 0;
@@ -22,16 +18,16 @@ public class calculateFitness {
                 tmpInd = i;
             }
         }
+        System.out.println("Fitness: "+fitness);
         return fitness;
     }
 
-    //get general fitness
+    //Функция подсчёта суммы всех целевых функций
     public static double getAllFitness(Population pop){
         double sum = 0;
         int currentFitness;
 
         for (int i = 0; i < pop.length(); i++) {
-//            System.out.println(sum);
             currentFitness = calculateFitness.getFitness(Main.matrix, pop.ba[i]);
             sum += currentFitness;
 

@@ -8,6 +8,7 @@ import java.text.DecimalFormat;
 
 public class Dijkstra {
     private static final Graph.Edge[] GRAPH = {
+
             new Graph.Edge("a", "1", 20),
             new Graph.Edge("a", "2", 12),
             new Graph.Edge("a", "3", 9),
@@ -24,23 +25,27 @@ public class Dijkstra {
             new Graph.Edge("6", "e", 18),
             new Graph.Edge("7", "e", 21),
             new Graph.Edge("8", "e", 2),
+
     };
     private static final String START = "a";
     private static final String END = "e";
 
     public static void main(String[] args) {
-        final long startTime = System.nanoTime();
-        Graph g = new Graph(GRAPH);
-        g.dijkstra(START);
-        g.printPath(END);
-        final double estimatedTime  = (System.nanoTime() - startTime)/1000000000.0;
+        for (int i = 0; i < 31; i++) {
+            final long startTime = System.nanoTime();
+            Graph g = new Graph(GRAPH);
+            g.dijkstra(START);
+            g.printPath(END);
+
+            final double estimatedTime  = (System.nanoTime() - startTime)/1000000000.0;
 //        double seconds = (double)estimatedTime / 1000000000.0;
 //        double seconds = (double)estimatedTime;
 //        System.out.println("Time of calculations is: " + seconds);
 
-        DecimalFormat df = new DecimalFormat("#.#########");
-        df.setMaximumFractionDigits(8);
-        System.out.println(df.format(estimatedTime));
-        //g.printAllPaths();
+            DecimalFormat df = new DecimalFormat("#.#########");
+            df.setMaximumFractionDigits(8);
+            System.out.println(df.format(estimatedTime));
+            //g.printAllPaths();
+        }
     }
 }

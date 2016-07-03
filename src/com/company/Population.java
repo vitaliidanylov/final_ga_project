@@ -2,9 +2,6 @@ package com.company;
 
 import sun.security.util.BitArray;
 
-/**
- * Created by vit on 6/10/2016.
- */
 public class Population {
 
     BitArray ba[];
@@ -22,10 +19,9 @@ public class Population {
             for (int j = 1; j < chromosomeSize - 1; j++) {
                 bCh.set(j,randomBoolean());
             }
-            if(additionFunctions.isCon(Main.matrix, bCh)){
+            if(additionFunctions.isConnected(Main.matrix, bCh)){
                 ba[ctr] = bCh;
                 ctr++;
-//                System.out.println("Chromosome created :"+ctr);
             }
         }
     }

@@ -3,38 +3,34 @@ package com.company;
 import java.text.DecimalFormat;
 
 public class Main {
-    //matrix
-    public static double[][] matrix = MatrixFromFile.readMatrixFromFile("K:\\GoogleDrive\\GitHub_project\\ga_optimized\\src\\datasets\\matrix30x30.txt");
+    //загрузка матриці из файла
+    public static double[][] matrix = MatrixFromFile.readMatrixFromFile("K:\\GoogleDrive\\GitHub_project\\ga_optimized\\src\\datasets\\matrix10x10.txt");
 
     public static void main(String[] args) {
-        int maxIterations = 100;
-        final long startTime = System.nanoTime();
-        //variables
-        Population pop = new Population(30,30);
-        //generation of population
-        for (int i = 0; i < maxIterations; i++) {
-            pop = additionFunctions.selectionPop(pop);
-//            System.out.println("Selection done");
-            pop = additionFunctions.crossoverPop(pop);
-//            System.out.println("Cross done");
-            pop = additionFunctions.mutate(pop);
-//            System.out.println("Mutation done");
+        //количество итераций для каждой популяции
+        int maxIterations = 10;
+        //количество запусков алгоритма
+        for (int i = 0; i < 30; i++) {
+            //начало
+            final long startTime = System.nanoTime();
+            Population pop = new Population(6, 10);
+            for (int j = 0; j < maxIterations; j++) {
+                //основные этапы алгоитма
+                pop = additionFunctions.selectionPop(pop);
+                pop = additionFunctions.crossoverPop(pop);
+                pop = additionFunctions.mutate(pop);
+                //time
+                calculateFitness.getAllFitness(pop);
+                //end time
+            }
+            //перевод времени калькуляции в удобный формат
+            final double estimatedTime = (System.nanoTime() - startTime) / 1000000000.0;
+            DecimalFormat df = new DecimalFormat("#.#########");
+            df.setMaximumFractionDigits(8);
+            System.out.println(df.format(estimatedTime));
+            //вывод результата
+            System.out.println("Shortest distance is: " + calculateFitness.maxFitness + " ");
+            System.out.println("Max chromosome: " + calculateFitness.maxChromosome);
         }
-        //time
-        calculateFitness.getAllFitness(pop);
-
-        System.out.println("Shortest distance is: " + calculateFitness.maxFitness);
-        System.out.println("Max chromosome: " + calculateFitness.maxChromosome);
-        //end time
-        final double estimatedTime  = (System.nanoTime() - startTime)/1000000000.0;
-//        double seconds = (double)estimatedTime / 1000000000.0;
-//        double seconds = (double)estimatedTime;
-//        System.out.println("Time of calculations is: " + seconds);
-
-        DecimalFormat df = new DecimalFormat("#.#########");
-        df.setMaximumFractionDigits(8);
-        System.out.println(df.format(estimatedTime));
-
     }
-
 }

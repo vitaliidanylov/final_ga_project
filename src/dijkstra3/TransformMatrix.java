@@ -11,8 +11,8 @@ public class TransformMatrix {
     public static void main(String[] args) {
         double[][] matrix = MatrixFromFile.readMatrixFromFile("K:\\GoogleDrive\\GitHub_project\\ga_optimized\\src\\datasets\\matrix10x10.txt");
         convertMatrix(matrix);
-
     }
+
     public static ArrayList convertMatrix(double[][] matrix){
         ArrayList formated = new ArrayList();
 
@@ -21,9 +21,9 @@ public class TransformMatrix {
                 if (!Double.isInfinite(matrix[i][j])){
                     if (i == j) continue;
                     else if(i == 0) {
-                        System.out.println("new Graph.Edge(\"a\", \""+j+"\", "+matrix[i][j]+"),");
+                        System.out.println("new Graph.Edge(\"a\", \""+j+"\", "+(int)matrix[i][j]+"),");
                     } else if(j == matrix.length-1){
-                        System.out.println("new Graph.Edge(\""+i+"\", \"e\", "+matrix[i][j]+"),");
+                        System.out.println("new Graph.Edge(\""+i+"\", \"e\", "+(int)matrix[i][j]+"),");
                     } else {
                         System.out.println("new Graph.Edge(\""+i+"\", \""+j+"\", "+ (int)matrix[i][j]+"),");
                     }
