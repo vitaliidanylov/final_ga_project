@@ -7,7 +7,7 @@ public class calculateFitness {
     public static int maxFitness = Integer.MAX_VALUE;
     public static BitArray maxChromosome;
 
-    //Функция получения целевого значения хромосомы
+    //fitness function calculatio for chromosome
     static int getFitness(double[][] matrix, BitArray ch){
         int     fitness = 0,
                 tmpInd = 0;
@@ -22,7 +22,7 @@ public class calculateFitness {
         return fitness;
     }
 
-    //Функция подсчёта суммы всех целевых функций
+    //sum of fitness functions
     public static double getAllFitness(Population pop){
         double sum = 0;
         int currentFitness;

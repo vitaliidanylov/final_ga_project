@@ -6,10 +6,10 @@ import sun.security.util.BitArray;
  * Created by vit on 5/19/2016.
  */
 public class additionFunctions {
-    //объявление популяции
+    //population init
     static Population newPop;
 
-    //функция для проверки существавания маршрута
+    //checking rout e function
     public static boolean isConnected(double[][] arr, BitArray ch) {
         boolean res = false;
         int point = 0;
@@ -27,7 +27,7 @@ public class additionFunctions {
         return res;
     }
 
-    //функция селекции
+    //selection
     public static Population selectionPop(Population oldPop) {
         //counter to track how many chromosome in new population
         int ctrNew = 0,
@@ -35,14 +35,14 @@ public class additionFunctions {
         double  random,
                 sumOfFit = 0;
 
-        //сумма всех целевых функций
+        //fitness sum
         sumOfFit = calculateFitness.getAllFitness(oldPop);
         double[] arrOfFit = new double[oldPop.length()];
 
-        //создание новой популяции
+        //creation of new population
         newPop = new Population(oldPop.length());
 
-        //расчёт целевой функции каждой хромосомы
+        //fitness function calcucation
         for (int i = 0; i < oldPop.length(); i++) {
             arrOfFit[i] = sumOfFit / calculateFitness.getFitness(Main.matrix, oldPop.ba[i]) * 100;
         }
@@ -102,16 +102,16 @@ public class additionFunctions {
         return newPop;
     }
 
-    //функция мутации
+    //mutation function
     public static Population mutate(Population oldPop) {
-        //счётчик
+        //counters
         int ctr = 0;
-        //уровень мутации
+        //mutation level
         int a = (int) (0.07*oldPop.length());
-        //переменные случайных чисел
+        //random variables
         int     randChromo,
                 randGene;
-        //временная хромосома
+        //tmp chromosome
         BitArray tmpChromo;
 
         while(a != ctr){

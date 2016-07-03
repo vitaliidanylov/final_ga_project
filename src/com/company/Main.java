@@ -3,19 +3,19 @@ package com.company;
 import java.text.DecimalFormat;
 
 public class Main {
-    //загрузка матриці из файла
+    //load matrix from file
     public static double[][] matrix = MatrixFromFile.readMatrixFromFile("K:\\GoogleDrive\\GitHub_project\\ga_optimized\\src\\datasets\\matrix10x10.txt");
 
     public static void main(String[] args) {
-        //количество итераций для каждой популяции
+        //number of iterations in algorithm
         int maxIterations = 10;
-        //количество запусков алгоритма
+        //number of algorithm starts
         for (int i = 0; i < 30; i++) {
             //начало
             final long startTime = System.nanoTime();
             Population pop = new Population(6, 10);
             for (int j = 0; j < maxIterations; j++) {
-                //основные этапы алгоитма
+                //main
                 pop = additionFunctions.selectionPop(pop);
                 pop = additionFunctions.crossoverPop(pop);
                 pop = additionFunctions.mutate(pop);
@@ -28,7 +28,7 @@ public class Main {
             DecimalFormat df = new DecimalFormat("#.#########");
             df.setMaximumFractionDigits(8);
             System.out.println(df.format(estimatedTime));
-            //вывод результата
+            //result output
             System.out.println("Shortest distance is: " + calculateFitness.maxFitness + " ");
             System.out.println("Max chromosome: " + calculateFitness.maxChromosome);
         }
