@@ -4,9 +4,10 @@ import java.text.DecimalFormat;
 
 public class Main {
     //load matrix from file
-    public static double[][] matrix = MatrixFromFile.readMatrixFromFile("K:\\GoogleDrive\\GitHub_project\\ga_optimized\\src\\datasets\\matrix10x10.txt");
+    public static double[][] matrix = MatrixFromFile.readMatrixFromFile("/home/vit/IdeaProjects/final_ga_project/src/datasets/matrix10x10.txt");
 
     public static void main(String[] args) {
+
         //number of iterations in algorithm
         int maxIterations = 10;
         //number of algorithm starts
@@ -14,6 +15,7 @@ public class Main {
             //начало
             final long startTime = System.nanoTime();
             Population pop = new Population(6, 10);
+//            System.out.println(Arrays.toString(pop.ba));
             for (int j = 0; j < maxIterations; j++) {
                 //main
                 pop = additionFunctions.selectionPop(pop);

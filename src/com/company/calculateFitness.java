@@ -18,7 +18,7 @@ public class calculateFitness {
                 tmpInd = i;
             }
         }
-        System.out.println("Fitness: "+fitness);
+//        System.out.println("Fitness: "+fitness);
         return fitness;
     }
 
