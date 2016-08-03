@@ -13,7 +13,7 @@ import java.util.Stack;
 class ShortestPath {
     // A utility function to find the vertex with minimum distance value,
     // from the set of vertices not yet included in shortest path tree
-    static final int V = 10;
+    static final int V = 500;
 
     int minDistance(int dist[], Boolean sptSet[]) {
         // Initialize min value
@@ -100,12 +100,12 @@ class ShortestPath {
 
     // Driver method
     public static void main(String[] args) {
-        String path = "/home/vit/IdeaProjects/final_ga_project/src/datasets_dijkstra/matrix10x10d.txt";
+        String path = "src/datasets_dijkstra/matrix500x500d.txt";
         /* Let us create the example graph discussed above */
         int graph[][] = MatrixFromFile.readMatrixFromFile(path);
 //        MatrixFromFile.printMatrix(graph);
 
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 31; i++) {
             //start time
             final double startTime = System.nanoTime();
             ShortestPath t = new ShortestPath();

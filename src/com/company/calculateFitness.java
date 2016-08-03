@@ -4,8 +4,9 @@ import sun.security.util.BitArray;
 
 public class calculateFitness {
 
-    public static int maxFitness = Integer.MAX_VALUE;
-    public static BitArray maxChromosome;
+    static int maxFitness = Integer.MAX_VALUE;
+    static BitArray maxChromosome;
+    static double[] arrOfFitneses;
 
     //fitness function calculatio for chromosome
     static int getFitness(double[][] matrix, BitArray ch){
@@ -26,17 +27,18 @@ public class calculateFitness {
     public static double getAllFitness(Population pop){
         double sum = 0;
         int currentFitness;
+        arrOfFitneses = new double[pop.length()];
 
         for (int i = 0; i < pop.length(); i++) {
             currentFitness = calculateFitness.getFitness(Main.matrix, pop.ba[i]);
+            arrOfFitneses[i] = currentFitness;
             sum += currentFitness;
 
-            if(maxFitness > currentFitness){
+            if(maxFitness >currentFitness){
                 maxFitness = currentFitness;
                 maxChromosome = pop.ba[i];
             }
         }
         return sum;
     }
-
 }

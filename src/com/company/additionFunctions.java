@@ -2,6 +2,8 @@ package com.company;
 
 import sun.security.util.BitArray;
 
+import java.text.DecimalFormat;
+
 /**
  * Created by vit on 5/19/2016.
  */
@@ -30,26 +32,20 @@ public class additionFunctions {
     //selection
     public static Population selectionPop(Population oldPop) {
         //counter to track how many chromosome in new population
-        int ctrNew = 0,
+        int     ctrNew = 0,
                 ctrOld = 0;
-        double random,
-                sumOfFit = 0;
+        double  random,
+                sumOfFit;
 
         //fitness sum
         sumOfFit = calculateFitness.getAllFitness(oldPop);
-        double[] arrOfFit = new double[oldPop.length()];
 
         //creation of new population
         newPop = new Population(oldPop.length());
 
-        //fitness function calcucation
-        for (int i = 0; i < oldPop.length(); i++) {
-            arrOfFit[i] = sumOfFit / calculateFitness.getFitness(Main.matrix, oldPop.ba[i]) * 100;
-        }
-
         while (ctrNew < newPop.length()) {
-            random = Math.random();
-            if (random < arrOfFit[ctrOld]) {
+            random = Math.random()*sumOfFit;
+            if (random > calculateFitness.arrOfFitneses[ctrOld]) {
                 newPop.ba[ctrNew] = oldPop.ba[ctrOld];
                 ctrNew++;
             } else {
@@ -65,14 +61,14 @@ public class additionFunctions {
     //crossover function
     public static Population crossoverPop(Population oldPop) {
         //counters
-        int newCtr = 0,
+        int     newCtr = 0,
                 point = oldPop.ba[0].length(),
                 cutPoint;
 
         //parents an intermediate array
         BitArray p1,
-                p2;
-        boolean tmpArray;
+                 p2;
+        boolean  tmpArray;
 
         //crate new population
         Population newPop = new Population(oldPop.length());
@@ -107,7 +103,8 @@ public class additionFunctions {
         //counters
         int ctr = 0;
         //mutation level
-        int a = (int) (0.07 * oldPop.length());
+        double a = Math.ceil(0.04 * oldPop.length());
+//        System.out.println(a);
         //random variables
         int randChromo,
                 randGene;
@@ -128,48 +125,10 @@ public class additionFunctions {
         return oldPop;
     }
 
-//    //modified, create edges aarray (test function)
-//    public static ArrayList<ArrayList> getEdges(double[][] arrMatrix) {
-//        ArrayList<ArrayList> edges = new ArrayList<>();
-//        ArrayList tmp;
-//        //loops for filter edges
-//        for (int i = 0; i < arrMatrix.length - 1; i++) {
-//            tmp = new ArrayList();
-//            for (int j = i + 1; j < arrMatrix[i].length; j++) {
-//                if (!Double.isInfinite(arrMatrix[i][j])) {
-//                    tmp.add(j);
-//                }
-//            }
-//            edges.add(tmp);
-//        }
-//        return edges;
-//    }
-//
-//    //check if connected (test function)
-//    public static boolean isConnectedMod(ArrayList<ArrayList> arrList, BitArray ch) {
-//        //how many iterations do we need
-//        int numOfIter = 0;
-//        for (int i = 0; i < ch.length(); i++) {
-//            if (ch.get(i)){
-//                numOfIter++;
-//            }
-//        }
-//
-//        //counter variables
-//        int arrCount = 0;
-//        int chCounter = 1;
-//        boolean res = false;
-//        //checking function
-//        for (int i = 0; i < ch.length()-1; i++) {
-//            if (ch.get(chCounter) && arrList.get(arrCount).contains(chCounter)){
-//                arrCount = chCounter;
-//                res = true;
-//            } else if(ch.get(chCounter) && !arrList.get(arrCount).contains(chCounter)){
-//                res = false;
-//                break;
-//            }
-//        }
-//
-//        return res;
-//    }
+    public static void getTime(long startTime){
+        final double estimatedTime = (System.nanoTime() - startTime) / 1000000000.0;
+        DecimalFormat df = new DecimalFormat("#.#########");
+        df.setMaximumFractionDigits(8);
+        System.out.println(df.format(estimatedTime));
+    }
 }
